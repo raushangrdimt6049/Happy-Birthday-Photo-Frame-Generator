@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Custom Happy Birthday Photo Frame for Nandini with July Calendar, Photo Gallery, and Romantic Artwork">
+    <title>Happy Birthday Nandini — Photo Frame</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:ital,wght@1,500;1,600;1,700&family=Montserrat:wght@600;700;800;900&family=Playfair+Display:ital,wght@1,600;1,700;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-ambient">
+
+    <!-- Top Navigation Toolbar -->
+    <header class="app-toolbar" id="appToolbar">
+        <div class="toolbar-brand">
+            <span class="toolbar-icon">🎁</span>
+            <div class="toolbar-title-group">
+                <span class="toolbar-title">Happy Birthday Nandini</span>
+                <span class="toolbar-subtitle">Custom Photo Frame Memorial</span>
+            </div>
+        </div>
+
+        <div class="toolbar-actions">
+            <!-- Frame Style Toggle -->
+            <button class="tool-btn" id="btnToggleFrame" title="Toggle Frame Design">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <rect x="7" y="7" width="10" height="10" rx="1" ry="1"></rect>
+                </svg>
+                <span id="frameModeText">Wood Frame</span>
+            </button>
+
+            <!-- Ambient Light Toggle -->
+            <button class="tool-btn" id="btnToggleLight" title="Toggle Gallery Ambient Lighting">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <span>Spotlight</span>
+            </button>
+
+            <!-- View Fit Toggle -->
+            <button class="tool-btn" id="btnToggleZoom" title="Toggle Fit View">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <polyline points="9 21 3 21 3 15"></polyline>
+                    <line x1="21" y1="3" x2="14" y2="10"></line>
+                    <line x1="3" y1="21" x2="10" y2="14"></line>
+                </svg>
+                <span id="zoomText">Fit Screen</span>
+            </button>
+
+            <!-- Print / PDF Button -->
+            <button class="tool-btn tool-btn-primary" id="btnPrint" onclick="window.print()" title="Print or Save as High-Quality PDF">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                    <rect x="6" y="14" width="12" height="8"></rect>
+                </svg>
+                <span>Print / Save PDF</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Presentation Stage -->
+    <main class="gallery-stage" id="galleryStage">
+        <!-- Spotlight Glow Effect -->
+        <div class="ambient-spotlight" id="ambientSpotlight"></div>
+
+        <!-- The Photo Frame Container (Ratio 1092 x 1440) -->
+        <div class="frame-container frame-style-wood" id="frameContainer">
+
+            <!-- Authentic Wood Picture Frame Overlay -->
+            <img src="frame.png" class="frame-wood-overlay" id="frameWoodOverlay" alt="Carved Wooden Picture Frame">
+
+            <!-- Sleek Minimalist Border (Active when frame toggled) -->
+            <div class="frame-sleek-border" id="frameSleekBorder"></div>
+
+            <!-- Inner Canvas Content (936 x 1279 aspect) -->
+            <div class="canvas-inner" id="canvasInner">
+
+                <!-- 1. Top-Left: July Calendar -->
+                <section class="item item-calendar" id="calendarSection" aria-label="July Birthday Calendar">
+                    <div class="cal-header-banner">
+                        <img src="Calender_dove.png" class="cal-banner-img" alt="Calendar dove and golden bar">
+                        <span class="cal-month-title">July</span>
+                    </div>
+
+                    <div class="cal-weekdays-row">
+                        <span class="cal-col-sun">S</span>
+                        <span>M</span>
+                        <span>T</span>
+                        <span>W</span>
+                        <span>T</span>
+                        <span>F</span>
+                        <span>S</span>
+                    </div>
+
+                    <div class="cal-grid">
+                        <!-- Row 1: Mon-Sat (1 to 6) -->
+                        <span class="cal-cell cal-cell-empty"></span>
+                        <span class="cal-cell">1</span>
+                        <span class="cal-cell">2</span>
+                        <span class="cal-cell">3</span>
+                        <span class="cal-cell">4</span>
+                        <span class="cal-cell">5</span>
+                        <span class="cal-cell">6</span>
+
+                        <!-- Row 2: 7 to 13 (July 11 Birthday with red heart) -->
+                        <span class="cal-cell cal-col-sun">7</span>
+                        <span class="cal-cell">8</span>
+                        <span class="cal-cell">9</span>
+                        <span class="cal-cell">10</span>
+                        <span class="cal-cell cal-birthday-cell" title="Birthday: July 11">
+                            <span class="cal-day-num">11</span>
+                            <img src="calendar_heart.png" class="cal-heart-badge" alt="Heart marker">
+                        </span>
+                        <span class="cal-cell">12</span>
+                        <span class="cal-cell">13</span>
+
+                        <!-- Row 3: 14 to 20 -->
+                        <span class="cal-cell cal-col-sun">14</span>
+                        <span class="cal-cell">15</span>
+                        <span class="cal-cell">16</span>
+                        <span class="cal-cell">17</span>
+                        <span class="cal-cell">18</span>
+                        <span class="cal-cell">19</span>
+                        <span class="cal-cell">20</span>
+
+                        <!-- Row 4: 21 to 27 -->
+                        <span class="cal-cell cal-col-sun">21</span>
+                        <span class="cal-cell">22</span>
+                        <span class="cal-cell">23</span>
+                        <span class="cal-cell">24</span>
+                        <span class="cal-cell">25</span>
+                        <span class="cal-cell">26</span>
+                        <span class="cal-cell">27</span>
+
+                        <!-- Row 5: 28 to 31 -->
+                        <span class="cal-cell cal-col-sun">28</span>
+                        <span class="cal-cell">29</span>
+                        <span class="cal-cell">30</span>
+                        <span class="cal-cell">31</span>
+                        <span class="cal-cell cal-cell-empty"></span>
+                        <span class="cal-cell cal-cell-empty"></span>
+                        <span class="cal-cell cal-cell-empty"></span>
+                    </div>
+                </section>
+
+                <!-- 2. Top-Center: Hearts with Golden Ribbon -->
+                <div class="item item-hearts" id="heartsDeco">
+                    <img src="heart_ribbon.png" alt="Two red hearts with gold ribbon">
+                </div>
+
+                <!-- 3. Top-Center: Main Couple Portrait Photo -->
+                <div class="item item-couple" id="couplePortrait" title="Click to view photo">
+                    <img src="main_couple.png" alt="Couple portrait in romantic lighting">
+                </div>
+
+                <!-- 4. Top-Right: Golden Dreamcatcher -->
+                <div class="item item-dreamcatcher" id="dreamcatcherDeco">
+                    <img src="dreamcatcher.png" alt="Intricate golden dreamcatcher with feathers">
+                </div>
+
+                <!-- 5. Left-Middle: Doves with Golden Heart -->
+                <div class="item item-doves" id="dovesDeco">
+                    <img src="dove_hearts.png" alt="Two doves with shining golden heart">
+                </div>
+
+                <!-- 6. Left-Middle: Birthday Promise Quote in Text Form (Left-Center to 6 images) -->
+                <div class="item item-quote-text" id="birthdayQuote">
+                    <div class="quote-sparkles">💖 ✨ ✨</div>
+                    <p class="quote-line">💫 🦋 On your special</p>
+                    <p class="quote-line">day i promise i will</p>
+                    <p class="quote-line">always stand 🦋 with</p>
+                    <p class="quote-line">u even if the ✨ whole</p>
+                    <p class="quote-line">world is against u. 🦋</p>
+                    <p class="quote-line">✨ Always there for</p>
+                    <p class="quote-line">u in your 🦋 bad and</p>
+                    <p class="quote-line">good 🦋 times. ❤️</p>
+                    <p class="quote-line">U're my ✨ happiness</p>
+                    <p class="quote-line quote-last-line">❤️ My 😊 smile. ❤️</p>
+                </div>
+
+                <!-- 7. Center-Right: 6-Photo Collage Gallery Grid -->
+                <section class="item item-gallery" id="photoGallery" aria-label="Photo Gallery">
+                    <!-- Top Row -->
+                    <div class="gallery-cell cell-1" data-src="gallery_1.png" title="Click to enlarge">
+                        <img src="gallery_1.png" alt="Nandini in teal dress in nature">
+                    </div>
+                    <div class="gallery-cell cell-2" data-src="gallery_2.png" title="Click to enlarge">
+                        <img src="gallery_2.png" alt="Couple embracing softly under tree">
+                    </div>
+                    <div class="gallery-cell cell-3" data-src="gallery_3.png" title="Click to enlarge">
+                        <img src="gallery_3.png" alt="Loving couple holding each other outdoors">
+                    </div>
+
+                    <!-- Bottom Row -->
+                    <div class="gallery-cell cell-4" data-src="gallery_4.png" title="Click to enlarge">
+                        <img src="gallery_4.png" alt="Romantic sunset silhouette embrace">
+                    </div>
+                    <div class="gallery-cell cell-5" data-src="gallery_5.png" title="Click to enlarge">
+                        <img src="gallery_5.png" alt="Couple in blue in serene grassy field">
+                    </div>
+                    <div class="gallery-cell cell-6" data-src="gallery_6.png" title="Click to enlarge">
+                        <img src="gallery_6.png" alt="Romantic portrait with saree and kurta">
+                    </div>
+                </section>
+
+                <!-- 8. Bottom-Center: Forever Love Infinity Emblem -->
+                <div class="item item-forever" id="foreverLove">
+                    <img src="forever_love.png" alt="Forever Love infinity loop with dove">
+                </div>
+
+                <!-- 9. Bottom-Center: Birthday Greeting in Text Form (Between Butterflies) -->
+                <div class="item item-greeting-text" id="birthdayGreeting">
+                    <h2 class="greeting-line-1">Happy birthday my dear</h2>
+                    <h2 class="greeting-line-2">wife Nandini</h2>
+                </div>
+
+                <!-- 10. Bottom-Left: Glass Crystal Butterfly -->
+                <div class="item item-butterfly-left" id="butterflyLeft">
+                    <img src="butterfly_left.png" alt="Crystal jeweled butterfly left">
+                </div>
+
+                <!-- 11. Bottom-Right: Glass Crystal Butterfly -->
+                <div class="item item-butterfly-right" id="butterflyRight">
+                    <img src="butterfly_right.png" alt="Crystal jeweled butterfly right">
+                </div>
+
+            </div> <!-- /.canvas-inner -->
+
+        </div> <!-- /.frame-container -->
+    </main>
+
+    <!-- Lightbox Modal for Photo Zooming -->
+    <dialog class="lightbox-modal" id="lightboxModal">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose" aria-label="Close photo preview">✕</button>
+            <img src="" id="lightboxImg" alt="Enlarged photo preview">
+        </div>
+    </dialog>
+
+    <script src="script.js"></script>
+</body>
+</html>

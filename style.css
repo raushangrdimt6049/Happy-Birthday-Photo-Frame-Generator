@@ -1,0 +1,781 @@
+/* ==========================================================================
+   Happy Birthday Nandini — Photo Frame Stylesheet
+   Modern, responsive, pixel-faithful reproduction of Main Webpage.png
+   ========================================================================== */
+
+/* --- CSS Reset & Global Settings --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #0c0c0e;
+    color: #ffffff;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Ambient Stage Background --- */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: radial-gradient(circle at 50% 30%, #1e1e24 0%, #0c0c0e 65%, #050507 100%);
+    background-attachment: fixed;
+}
+
+/* --- Floating Glassmorphic Toolbar --- */
+.app-toolbar {
+    position: sticky;
+    top: 16px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: min(94vw, 1120px);
+    padding: 10px 20px;
+    margin: 12px auto;
+    background: rgba(24, 24, 28, 0.78);
+    backdrop-filter: blur(18px) saturate(180%);
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50px;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.4),
+        0 1px 2px rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.toolbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.toolbar-icon {
+    font-size: 24px;
+    filter: drop-shadow(0 2px 8px rgba(255, 215, 0, 0.4));
+}
+
+.toolbar-title-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.toolbar-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.3px;
+    background: linear-gradient(135deg, #ffffff 0%, #f0d588 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.toolbar-subtitle {
+    font-size: 11px;
+    color: #8e8e93;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.toolbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tool-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #e5e5ea;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    user-select: none;
+}
+
+.tool-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.22);
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.tool-btn:active {
+    transform: translateY(0);
+}
+
+.tool-btn-primary {
+    background: linear-gradient(135deg, #d4af37 0%, #aa8214 100%);
+    border: 1px solid #ffd700;
+    color: #121212;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.tool-btn-primary:hover {
+    background: linear-gradient(135deg, #e5bf45 0%, #be9419 100%);
+    color: #000000;
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.45);
+}
+
+/* --- Gallery Stage --- */
+.gallery-stage {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px 16px 60px;
+}
+
+/* Subtle spotlight cone */
+.ambient-spotlight {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 65vw;
+    height: 70vh;
+    background: radial-gradient(ellipse at 50% 20%, rgba(212, 175, 55, 0.08) 0%, rgba(255, 255, 255, 0.03) 40%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+    transition: opacity 0.4s ease;
+}
+
+body.spotlight-off .ambient-spotlight {
+    opacity: 0;
+}
+
+/* ==========================================================================
+   PHOTO FRAME CONTAINER
+   Native resolution: 1092 x 1440 (aspect ratio: 0.758333)
+   ========================================================================== */
+.frame-container {
+    position: relative;
+    width: min(92vw, calc(86dvh * (1092 / 1440)));
+    max-width: 1092px;
+    aspect-ratio: 1092 / 1440;
+    margin: 0 auto;
+    background: #000000;
+    overflow: hidden;
+    user-select: none;
+    z-index: 5;
+    container-type: inline-size;
+    container-name: frame;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, width 0.3s ease;
+}
+
+/* Frame style: Ornate Wood (Default) */
+.frame-container.frame-style-wood {
+    box-shadow: 
+        0 30px 80px -10px rgba(0, 0, 0, 0.95),
+        0 15px 30px -5px rgba(0, 0, 0, 0.8),
+        0 0 120px -20px rgba(0, 0, 0, 0.9);
+}
+
+.frame-wood-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    pointer-events: none;
+    z-index: 20;
+    transition: opacity 0.3s ease;
+}
+
+/* Frame style: Sleek Modern Border */
+.frame-sleek-border {
+    display: none;
+    position: absolute;
+    inset: 0;
+    border: 14px solid #1a1917;
+    box-shadow: 
+        inset 0 0 0 2px #d4af37,
+        inset 0 0 20px rgba(0, 0, 0, 0.9);
+    pointer-events: none;
+    z-index: 20;
+}
+
+.frame-container.frame-style-sleek .frame-wood-overlay {
+    opacity: 0;
+}
+
+.frame-container.frame-style-sleek .frame-sleek-border {
+    display: block;
+}
+
+/* Frame style: Frameless Canvas */
+.frame-container.frame-style-none .frame-wood-overlay,
+.frame-container.frame-style-none .frame-sleek-border {
+    display: none;
+}
+
+.frame-container.frame-style-none {
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+}
+
+/* Zoomed view */
+body.view-full .frame-container {
+    width: min(98vw, 1092px);
+}
+
+/* ==========================================================================
+   INNER CANVAS
+   Canvas resolution: 936 x 1279
+   Bounding box in 1092 x 1440 frame:
+   left: 78px (7.142857%), top: 74px (5.138889%)
+   width: 936px (85.714286%), height: 1279px (88.819444%)
+   ========================================================================== */
+.canvas-inner {
+    position: absolute;
+    top: 5.1389%;
+    left: 7.1429%;
+    width: 85.7143%;
+    height: 88.8194%;
+    background-color: #000000;
+    overflow: hidden;
+    z-index: 10;
+    container-type: inline-size;
+}
+
+/* Framing shadow inner bevel */
+.canvas-inner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.9);
+    pointer-events: none;
+    z-index: 15;
+}
+
+/* --- Generic Absolute Item --- */
+.item {
+    position: absolute;
+    display: block;
+}
+
+.item img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* ==========================================================================
+   1. TOP-LEFT: JULY CALENDAR
+   ========================================================================== */
+.item-calendar {
+    left: 3.74%;
+    top: 1.56%;
+    width: 36.75%;
+    height: 31.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: #ffffff;
+    z-index: 12;
+}
+
+/* Calendar Header Banner with Dove and Integrated Gold Bar */
+.cal-header-banner {
+    position: relative;
+    width: 100%;
+    margin-bottom: clamp(6px, 1.2cqw, 14px);
+}
+
+.cal-banner-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.7));
+}
+
+.cal-header-banner .cal-month-title {
+    position: absolute;
+    left: 38%;
+    bottom: 30%;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: clamp(16px, 3.8cqw, 38px);
+    color: #ffffff;
+    line-height: 1;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.95);
+}
+
+/* Weekday Labels (S M T W T F S) */
+.cal-weekdays-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 800;
+    font-size: clamp(10px, 2.3cqw, 23px);
+    color: #ffffff;
+    margin-bottom: clamp(4px, 0.8cqw, 10px);
+    letter-spacing: -0.5px;
+}
+
+.cal-col-sun {
+    color: #e50000 !important;
+}
+
+/* Calendar Days Grid (Expanded Height) */
+.cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: 1fr;
+    row-gap: clamp(5px, 1.35cqw, 16px);
+    text-align: center;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 700;
+    font-size: clamp(11px, 2.45cqw, 25px);
+    color: #ffffff;
+    align-items: center;
+}
+
+.cal-cell {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.cal-cell-empty {
+    visibility: hidden;
+}
+
+/* July 11 Birthday Highlight with 3D Glossy Red Heart */
+.cal-birthday-cell {
+    position: relative;
+    z-index: 5;
+    color: #ffffff;
+}
+
+.cal-day-num {
+    position: relative;
+    z-index: 6;
+}
+
+.cal-heart-badge {
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: clamp(22px, 5.5cqw, 58px) !important;
+    height: clamp(24px, 6.0cqw, 64px) !important;
+    object-fit: contain !important;
+    pointer-events: none;
+    z-index: 5;
+    filter: drop-shadow(0 2px 5px rgba(229, 0, 0, 0.5));
+}
+
+/* ==========================================================================
+   2. TOP-CENTER: HEARTS WITH GOLDEN RIBBON
+   Relative to inner canvas:
+   left: 43.91%, top: 5.71%, width: 21.05%, height: 8.84%
+   ========================================================================== */
+.item-hearts {
+    left: 43.91%;
+    top: 5.71%;
+    width: 21.05%;
+    height: 8.84%;
+    z-index: 12;
+}
+
+.item-hearts img {
+    object-fit: contain;
+    filter: drop-shadow(0 4px 10px rgba(220, 20, 60, 0.3));
+}
+
+/* ==========================================================================
+   3. TOP-CENTER: MAIN COUPLE PORTRAIT
+   Relative to inner canvas:
+   left: 40.81%, top: 14.86%, width: 26.60%, height: 22.99%
+   ========================================================================== */
+.item-couple {
+    left: 40.81%;
+    top: 14.86%;
+    width: 26.60%;
+    height: 22.99%;
+    z-index: 11;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.item-couple img {
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.item-couple:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+}
+
+.item-couple:hover img {
+    transform: scale(1.03);
+}
+
+/* ==========================================================================
+   4. TOP-RIGHT: GOLDEN DREAMCATCHER (Right Up Corner)
+   ========================================================================== */
+.item-dreamcatcher {
+    right: 0.5%;
+    top: 0.2%;
+    width: 28%;
+    height: 36.5%;
+    z-index: 12;
+}
+
+.item-dreamcatcher img {
+    object-fit: contain;
+    filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.25));
+}
+
+/* ==========================================================================
+   5. LEFT-MID: DOVES WITH GOLDEN HEART
+   ========================================================================== */
+.item-doves {
+    left: 11%;
+    top: 31.8%;
+    width: 17%;
+    height: 5.5%;
+    z-index: 12;
+}
+
+.item-doves img {
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
+}
+
+/* ==========================================================================
+   6. LEFT-MID: BIRTHDAY PROMISE QUOTE (Pure Text Form)
+   Lies at left of all six images, vertically center-aligned with the gallery
+   Gallery bounds: top 37.92%, height 36.20%
+   ========================================================================== */
+.item-quote-text {
+    left: 1.8%;
+    width: 37.5%;
+    top: 37.2%;
+    height: 37.0%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 12;
+    padding: 0 4px;
+    box-sizing: border-box;
+    user-select: none;
+    pointer-events: none;
+    gap: clamp(2px, 0.45cqw, 6px);
+}
+
+.quote-sparkles {
+    font-size: clamp(16px, 3.2cqw, 34px);
+    line-height: 1.1;
+    margin-bottom: clamp(5px, 1.0cqw, 12px);
+    letter-spacing: clamp(6px, 1.4cqw, 14px);
+    word-spacing: clamp(8px, 1.8cqw, 18px);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.9));
+}
+
+.quote-line {
+    margin: 0;
+    padding: 0;
+    font-family: 'Playfair Display', 'Lora', Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: clamp(10.5px, 2.3cqw, 24px);
+    line-height: 1.42;
+    color: #ffffff;
+    word-spacing: clamp(6px, 1.4cqw, 15px);
+    letter-spacing: clamp(0.3px, 0.08cqw, 1px);
+    text-shadow: 
+        0 2px 6px rgba(0, 0, 0, 0.95),
+        0 0 10px rgba(255, 255, 255, 0.12);
+    white-space: nowrap;
+}
+
+.quote-last-line {
+    margin-top: clamp(3px, 0.6cqw, 8px);
+    word-spacing: clamp(8px, 1.6cqw, 18px);
+}
+
+/* ==========================================================================
+   7. CENTER-RIGHT: 6-PHOTO COLLAGE GALLERY
+   Relative to inner canvas:
+   left: 40.28%, top: 37.92%, width: 56.84%, height: 36.20%
+   3 Columns with proportions matching gallery files: 124fr, 112fr, 122fr
+   2 Rows with proportions matching gallery files: 138fr, 178fr
+   Gap: ~3px pure black divider lines
+   ========================================================================== */
+.item-gallery {
+    left: 40.28%;
+    top: 37.92%;
+    width: 56.84%;
+    height: 36.20%;
+    display: grid;
+    grid-template-columns: 124fr 112fr 122fr;
+    grid-template-rows: 138fr 178fr;
+    gap: 3px;
+    background-color: #000000;
+    z-index: 11;
+}
+
+.gallery-cell {
+    position: relative;
+    overflow: hidden;
+    background-color: #000000;
+    cursor: pointer;
+}
+
+.gallery-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+}
+
+.gallery-cell:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.08);
+}
+
+/* ==========================================================================
+   8. BOTTOM-CENTER: FOREVER LOVE EMBLEM (Decreased Size)
+   ========================================================================== */
+.item-forever {
+    left: 34.5%;
+    top: 75.2%;
+    width: 31%;
+    height: 8.2%;
+    z-index: 12;
+}
+
+.item-forever img {
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(255, 255, 255, 0.15));
+}
+
+/* ==========================================================================
+   9. BOTTOM-CENTER: BIRTHDAY GREETING (Pure Text Form)
+   Positioned at the footer, horizontally centered between both butterflies
+   Left butterfly ends at ~17.2%, right butterfly starts at ~79.3%
+   ========================================================================== */
+.item-greeting-text {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 66%;
+    top: 83.2%;
+    height: 15.6%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 12;
+    pointer-events: none;
+    user-select: none;
+    gap: clamp(6px, 1.4cqw, 18px);
+}
+
+.greeting-line-1,
+.greeting-line-2 {
+    margin: 0;
+    padding: 0;
+    font-family: 'Great Vibes', cursive;
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 1.15;
+    text-align: center;
+    white-space: nowrap;
+    text-shadow: 
+        0 2px 10px rgba(0, 0, 0, 0.95),
+        0 0 24px rgba(255, 255, 255, 0.45);
+}
+
+.greeting-line-1 {
+    font-size: clamp(24px, 5.2cqw, 56px);
+    letter-spacing: 0.5px;
+}
+
+.greeting-line-2 {
+    font-size: clamp(28px, 6.2cqw, 66px);
+    letter-spacing: 0.8px;
+}
+
+/* ==========================================================================
+   10 & 11. BOTTOM BUTTERFLIES
+   Left: left 2.03%, top 82.33%, width 15.17%, height 16.58%
+   Right: left 79.27%, top 82.41%, width 18.59%, height 16.50%
+   ========================================================================== */
+.item-butterfly-left {
+    left: 2.03%;
+    top: 82.33%;
+    width: 15.17%;
+    height: 16.58%;
+    z-index: 12;
+}
+
+.item-butterfly-left img {
+    object-fit: contain;
+    filter: drop-shadow(0 4px 12px rgba(255, 105, 180, 0.25));
+    transition: transform 0.4s ease;
+}
+
+.item-butterfly-left:hover img {
+    transform: rotate(-4deg) scale(1.04);
+}
+
+.item-butterfly-right {
+    left: 79.27%;
+    top: 82.41%;
+    width: 18.59%;
+    height: 16.50%;
+    z-index: 12;
+}
+
+.item-butterfly-right img {
+    object-fit: contain;
+    filter: drop-shadow(0 4px 12px rgba(255, 105, 180, 0.25));
+    transition: transform 0.4s ease;
+}
+
+.item-butterfly-right:hover img {
+    transform: rotate(4deg) scale(1.04);
+}
+
+/* ==========================================================================
+   PHOTO LIGHTBOX MODAL
+   ========================================================================== */
+.lightbox-modal {
+    border: none;
+    background: transparent;
+    max-width: 90vw;
+    max-height: 90vh;
+    margin: auto;
+    overflow: visible;
+}
+
+.lightbox-modal::backdrop {
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+}
+
+.lightbox-content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.lightbox-content img {
+    max-width: 85vw;
+    max-height: 85vh;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1);
+    object-fit: contain;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #2c2c2e;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    transition: all 0.2s ease;
+}
+
+.lightbox-close:hover {
+    background: #e50000;
+    transform: scale(1.1);
+}
+
+/* ==========================================================================
+   PRINT STYLES
+   Optimized for high-res photo printing / PDF export
+   ========================================================================== */
+@page {
+    size: A4 portrait;
+    margin: 0;
+}
+
+@media print {
+    html, body {
+        width: 210mm !important;
+        height: 297mm !important;
+        background: #000000 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .app-toolbar,
+    .ambient-spotlight,
+    .lightbox-modal {
+        display: none !important;
+    }
+
+    .gallery-stage {
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    .frame-container {
+        width: 210mm !important;
+        height: 297mm !important;
+        max-width: none !important;
+        aspect-ratio: auto !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        page-break-inside: avoid !important;
+    }
+
+    .item-couple,
+    .gallery-cell {
+        cursor: default !important;
+    }
+}
