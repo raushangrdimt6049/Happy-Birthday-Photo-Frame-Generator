@@ -2,74 +2,54 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Custom Happy Birthday Photo Frame for Nandini with July Calendar, Photo Gallery, and Romantic Artwork">
-    <title>Happy Birthday Nandini — Photo Frame</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Live Photo Frame Generator — Create, customize, and download high-resolution photo frames with dynamic calendar, custom greetings, and gallery collage.">
+    <title>Live Photo Frame Generator</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:ital,wght@1,500;1,600;1,700&family=Montserrat:wght@600;700;800;900&family=Playfair+Display:ital,wght@1,600;1,700;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:ital,wght@1,500;1,600;1,700&family=Montserrat:wght@600;700;800;900&family=Playfair+Display:ital,wght@1,600;1,700;1,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+    <!-- jsPDF for High-Resolution 4K PDF Export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body class="theme-ambient">
 
-    <!-- Top Navigation Toolbar -->
+    <!-- Modern Era Top Navigation Header Bar -->
     <header class="app-toolbar" id="appToolbar">
         <div class="toolbar-brand">
-            <span class="toolbar-icon">🎁</span>
+            <div class="brand-badge-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="4" ry="4"></rect>
+                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                    <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+            </div>
             <div class="toolbar-title-group">
-                <span class="toolbar-title">Happy Birthday Nandini</span>
-                <span class="toolbar-subtitle">Custom Photo Frame Memorial</span>
+                <div class="toolbar-title-row">
+                    <h1 class="toolbar-title">Live Photo Frame Generator</h1>
+                    <span class="toolbar-status-badge">
+                        <span class="status-pulse-dot"></span>
+                        <span>4K LIVE</span>
+                    </span>
+                </div>
+                <span class="toolbar-subtitle">Real-Time Studio Canvas Engine</span>
             </div>
         </div>
 
-        <div class="toolbar-actions">
-            <!-- Frame Style Toggle -->
-            <button class="tool-btn" id="btnToggleFrame" title="Toggle Frame Design">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                    <rect x="7" y="7" width="10" height="10" rx="1" ry="1"></rect>
+        <div class="toolbar-right-actions">
+            <!-- Download 4K PDF Button -->
+            <button class="tool-btn tool-btn-primary tool-btn-pdf tool-btn-glow" id="btnHeaderDownloadPdf" title="Download Frame in 4K Ultra HD as a PDF Document">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
                 </svg>
-                <span id="frameModeText">Wood Frame</span>
-            </button>
-
-            <!-- Ambient Light Toggle -->
-            <button class="tool-btn" id="btnToggleLight" title="Toggle Gallery Ambient Lighting">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="5"></circle>
-                    <line x1="12" y1="1" x2="12" y2="3"></line>
-                    <line x1="12" y1="21" x2="12" y2="23"></line>
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                    <line x1="1" y1="12" x2="3" y2="12"></line>
-                    <line x1="21" y1="12" x2="23" y2="12"></line>
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                </svg>
-                <span>Spotlight</span>
-            </button>
-
-            <!-- View Fit Toggle -->
-            <button class="tool-btn" id="btnToggleZoom" title="Toggle Fit View">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="15 3 21 3 21 9"></polyline>
-                    <polyline points="9 21 3 21 3 15"></polyline>
-                    <line x1="21" y1="3" x2="14" y2="10"></line>
-                    <line x1="3" y1="21" x2="10" y2="14"></line>
-                </svg>
-                <span id="zoomText">Fit Screen</span>
-            </button>
-
-            <!-- Print / PDF Button -->
-            <button class="tool-btn tool-btn-primary" id="btnPrint" onclick="window.print()" title="Print or Save as High-Quality PDF">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="6 9 6 2 18 2 18 9"></polyline>
-                    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
-                    <rect x="6" y="14" width="12" height="8"></rect>
-                </svg>
-                <span>Print / Save PDF</span>
+                <span>Download PDF</span>
             </button>
         </div>
     </header>
@@ -79,26 +59,552 @@
         <!-- Spotlight Glow Effect -->
         <div class="ambient-spotlight" id="ambientSpotlight"></div>
 
-        <!-- The Photo Frame Container (Ratio 1092 x 1440) -->
-        <div class="frame-container frame-style-wood" id="frameContainer">
+        <!-- Customization Studio Box directly above the photo frame -->
+        <section class="customizer-studio" id="customizerStudio" aria-label="Photo Frame Customization Studio">
+            <!-- Studio Header Bar -->
+            <div class="studio-header">
+                <div class="studio-title-group">
+                    <div class="studio-badge">
+                        <span class="studio-badge-pulse"></span>
+                        <span>✨ Live Customizer</span>
+                    </div>
+                    <h2 class="studio-title">Customize Photo Frame</h2>
+                    <p class="studio-subtitle">Edit Date of Birth, Photos, Quotes, Ribbon & Greetings in real-time</p>
+                </div>
 
-            <!-- Authentic Wood Picture Frame Overlay -->
-            <img src="frame.png" class="frame-wood-overlay" id="frameWoodOverlay" alt="Carved Wooden Picture Frame">
+                <div class="studio-header-actions">
+                    <!-- Quick Download Button -->
+                    <button class="studio-btn studio-btn-download tool-btn-glow" id="btnStudioDownload" title="Download Full HD or 4K Ultra HD Frame (PNG or JPEG)">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        <span>Download 4K Frame</span>
+                    </button>
 
-            <!-- Sleek Minimalist Border (Active when frame toggled) -->
-            <div class="frame-sleek-border" id="frameSleekBorder"></div>
+                    <!-- Reset All Button -->
+                    <button class="studio-btn studio-btn-secondary" id="btnStudioReset" title="Reset all changes to original template">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                            <path d="M3 3v5h5"></path>
+                        </svg>
+                        <span>Reset All</span>
+                    </button>
 
-            <!-- Inner Canvas Content (936 x 1279 aspect) -->
-            <div class="canvas-inner" id="canvasInner">
+                    <!-- Collapse / Expand Toggle -->
+                    <button class="studio-btn studio-btn-icon" id="btnStudioToggleCollapse" title="Collapse / Expand Customizer Studio">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="collapseIcon">
+                            <polyline points="18 15 12 9 6 15"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
 
-                <!-- 1. Top-Left: July Calendar -->
-                <section class="item item-calendar" id="calendarSection" aria-label="July Birthday Calendar">
-                    <div class="cal-header-banner">
-                        <img src="Calender_dove.png" class="cal-banner-img" alt="Calendar dove and golden bar">
-                        <span class="cal-month-title">July</span>
+            <!-- Studio Navigation Category Tabs -->
+            <nav class="studio-tabs" id="studioTabs" aria-label="Editor Categories">
+                <button class="studio-tab-btn active" data-tab="dob">
+                    <span class="tab-emoji">📅</span>
+                    <span>Date of Birth</span>
+                </button>
+                <button class="studio-tab-btn" data-tab="mainPic">
+                    <span class="tab-emoji">💑</span>
+                    <span>Main Pic</span>
+                </button>
+                <button class="studio-tab-btn" data-tab="sidePhotos">
+                    <span class="tab-emoji">🖼️</span>
+                    <span>All Side Photos (6)</span>
+                </button>
+                <button class="studio-tab-btn" data-tab="heartRibbon">
+                    <span class="tab-emoji">🎀</span>
+                    <span>Heart Ribbon</span>
+                </button>
+                <button class="studio-tab-btn" data-tab="quotes">
+                    <span class="tab-emoji">📜</span>
+                    <span>Quotes</span>
+                </button>
+                <button class="studio-tab-btn" data-tab="foreverLove">
+                    <span class="tab-emoji">♾️</span>
+                    <span>Forever Love</span>
+                </button>
+                <button class="studio-tab-btn" data-tab="greetings">
+                    <span class="tab-emoji">💌</span>
+                    <span>Greetings</span>
+                </button>
+                <button class="studio-tab-btn" data-tab="frameBorder">
+                    <span class="tab-emoji">🪵</span>
+                    <span>Frame Border</span>
+                </button>
+                <button class="studio-tab-btn" data-tab="frameSize">
+                    <span class="tab-emoji">📐</span>
+                    <span>Frame Size & Ratio</span>
+                </button>
+            </nav>
+
+            <!-- Studio Tab Content Panels -->
+            <div class="studio-body" id="studioBody">
+                <!-- 1. Date of Birth Panel -->
+                <div class="studio-panel active" id="panelDob">
+                    <div class="panel-intro">
+                        <p>Enter the birthday date below. Only <strong>2 digits</strong> for Date (DD), <strong>2 digits</strong> for Month (MM), and <strong>4 digits</strong> for Year (YYYY). The calendar grid and 3D red heart badge update automatically in real-time!</p>
                     </div>
 
-                    <div class="cal-weekdays-row">
+                    <div class="dob-entry-card">
+                        <span class="dob-entry-title">Select Birthday Date (DD / MM / YYYY):</span>
+                        <div class="dob-segmented-box" id="dobSegmentedBox">
+                            <div class="dob-segment">
+                                <label for="dobInputDay">Date (DD):</label>
+                                <input type="text" id="dobInputDay" class="studio-input dob-digit-input" maxlength="2" placeholder="11" value="11" inputmode="numeric" autocomplete="off" title="Only 2 numbers for date (01-31)">
+                                <span class="dob-digit-hint">Only 2 numbers</span>
+                            </div>
+                            <span class="dob-separator">/</span>
+                            <div class="dob-segment">
+                                <label for="dobInputMonth">Month (MM):</label>
+                                <input type="text" id="dobInputMonth" class="studio-input dob-digit-input" maxlength="2" placeholder="07" value="07" inputmode="numeric" autocomplete="off" title="Only 2 numbers for month (01-12)">
+                                <span class="dob-digit-hint">Only 2 numbers</span>
+                            </div>
+                            <span class="dob-separator">/</span>
+                            <div class="dob-segment">
+                                <label for="dobInputYear">Year (YYYY):</label>
+                                <input type="text" id="dobInputYear" class="studio-input dob-digit-input dob-year-input" maxlength="4" placeholder="2024" value="2024" inputmode="numeric" autocomplete="off" title="Only 4 numbers for year (e.g. 2024)">
+                                <span class="dob-digit-hint">Only 4 numbers</span>
+                            </div>
+                        </div>
+
+                        <!-- Synced Month Selector & Active Summary -->
+                        <div class="dob-synced-bar">
+                            <div class="synced-item">
+                                <span class="synced-label">Month Name:</span>
+                                <select id="dobMonthSelect" class="studio-select studio-select-sm">
+                                    <option value="0">01 - January</option>
+                                    <option value="1">02 - February</option>
+                                    <option value="2">03 - March</option>
+                                    <option value="3">04 - April</option>
+                                    <option value="4">05 - May</option>
+                                    <option value="5">06 - June</option>
+                                    <option value="6" selected>07 - July</option>
+                                    <option value="7">08 - August</option>
+                                    <option value="8">09 - September</option>
+                                    <option value="9">10 - October</option>
+                                    <option value="10">11 - November</option>
+                                    <option value="11">12 - December</option>
+                                </select>
+                            </div>
+                            <div class="synced-badge-active" id="dobActiveDisplay">
+                                📅 Active Birthday: <strong id="dobActiveText">11 July 2024</strong>
+                            </div>
+                        </div>
+
+                        <!-- Month Name Position & Dove Gap Controller -->
+                        <div class="month-pos-control-card">
+                            <div class="control-header">
+                                <label for="monthLeftSlider" class="control-label">Month Name Position & Dove Gap:</label>
+                                <span class="size-val-badge" id="monthLeftVal">32% (Left with Gap)</span>
+                            </div>
+                            <div class="slider-with-btns">
+                                <button type="button" class="size-step-btn" id="btnMonthLeftDec" title="Nudge Month Left (Closer to Dove)">◀ Left</button>
+                                <input type="range" id="monthLeftSlider" min="26" max="46" value="32" step="1" class="studio-slider">
+                                <button type="button" class="size-step-btn" id="btnMonthLeftInc" title="Nudge Month Right (More Gap)">Right ▶</button>
+                                <button type="button" class="size-reset-btn" id="btnMonthLeftReset" title="Reset to default left gap (32%)">Reset (32%)</button>
+                            </div>
+                            <div class="month-gap-presets">
+                                <span class="preset-label">Quick Presets:</span>
+                                <button type="button" class="gap-preset-chip active" data-pos="32">🕊️ Balanced Gap (32% - Left)</button>
+                                <button type="button" class="gap-preset-chip" data-pos="30">🕊️ Closer Gap (30%)</button>
+                                <button type="button" class="gap-preset-chip" data-pos="35">🕊️ Spacious Gap (35%)</button>
+                                <button type="button" class="gap-preset-chip" data-pos="40">Centered (40%)</button>
+                            </div>
+                            <p class="dob-digit-hint" style="margin-top: 6px;">✨ The month name is placed on the left side over the golden bar, leaving an elegant visible gap after the dove.</p>
+                        </div>
+                    </div>
+
+                    <div class="panel-hint">
+                        💡 <em>Tip: You can double-tap or double-click the Calendar Dove, Month Name, or Calendar Dates Grid directly on the frame to move, scale, or reposition each one separately!</em>
+                    </div>
+                </div>
+
+                <!-- 2. Main Pic Panel -->
+                <div class="studio-panel" id="panelMainPic">
+                    <div class="panel-intro">
+                        <p>Upload a couple or individual portrait to replace the <strong>Main Center Photo</strong>.</p>
+                    </div>
+                    <div class="panel-upload-row">
+                        <div class="upload-preview-card">
+                            <img src="main_couple.png" id="mainPicPreview" class="upload-thumb" alt="Main Photo Preview">
+                            <span class="preview-badge">Current Photo</span>
+                        </div>
+                        <div class="upload-actions-card">
+                            <label class="studio-upload-btn" for="inputMainPic">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="17 8 12 3 7 8"></polyline>
+                                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                                </svg>
+                                <span>Upload New Main Photo</span>
+                                <input type="file" id="inputMainPic" accept="image/*" class="file-input-hidden">
+                            </label>
+                            <button class="studio-btn studio-btn-reset-item" id="btnResetMainPic" type="button">Reset to Original</button>
+                            <p class="file-hint">Supports JPG, PNG, WEBP, GIF. Auto-crops proportionally without distortion.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. All Side Photos (6 Gallery Photos) Panel -->
+                <div class="studio-panel" id="panelSidePhotos">
+                    <div class="panel-intro">
+                        <p>Customize the <strong>6 Collage Gallery Photos</strong>. Upload all 6 at once or replace each slot individually!</p>
+                    </div>
+                    <!-- Batch Upload Bar -->
+                    <div class="batch-upload-box">
+                        <label class="studio-upload-btn studio-upload-batch" for="inputBatchPhotos">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                <polyline points="21 15 16 10 5 21"></polyline>
+                            </svg>
+                            <span>⚡ Upload All 6 Photos at Once (Select up to 6 images together)</span>
+                            <input type="file" id="inputBatchPhotos" accept="image/*" multiple class="file-input-hidden">
+                        </label>
+                        <button class="studio-btn studio-btn-secondary" id="btnResetAllGallery" type="button">Reset All 6</button>
+                    </div>
+
+                    <!-- Individual Slots (1 to 6) -->
+                    <div class="gallery-slots-grid">
+                        <!-- Slot 1 -->
+                        <div class="slot-card">
+                            <span class="slot-title">Photo 1 (Top Left)</span>
+                            <img src="gallery_1.png" id="thumbSlot1" class="slot-thumb" alt="Slot 1">
+                            <label class="slot-upload-label" for="inputSlot1">
+                                <span>Upload</span>
+                                <input type="file" id="inputSlot1" accept="image/*" class="file-input-hidden">
+                            </label>
+                        </div>
+                        <!-- Slot 2 -->
+                        <div class="slot-card">
+                            <span class="slot-title">Photo 2 (Top Mid)</span>
+                            <img src="gallery_2.png" id="thumbSlot2" class="slot-thumb" alt="Slot 2">
+                            <label class="slot-upload-label" for="inputSlot2">
+                                <span>Upload</span>
+                                <input type="file" id="inputSlot2" accept="image/*" class="file-input-hidden">
+                            </label>
+                        </div>
+                        <!-- Slot 3 -->
+                        <div class="slot-card">
+                            <span class="slot-title">Photo 3 (Top Right)</span>
+                            <img src="gallery_3.png" id="thumbSlot3" class="slot-thumb" alt="Slot 3">
+                            <label class="slot-upload-label" for="inputSlot3">
+                                <span>Upload</span>
+                                <input type="file" id="inputSlot3" accept="image/*" class="file-input-hidden">
+                            </label>
+                        </div>
+                        <!-- Slot 4 -->
+                        <div class="slot-card">
+                            <span class="slot-title">Photo 4 (Bottom Left)</span>
+                            <img src="gallery_4.png" id="thumbSlot4" class="slot-thumb" alt="Slot 4">
+                            <label class="slot-upload-label" for="inputSlot4">
+                                <span>Upload</span>
+                                <input type="file" id="inputSlot4" accept="image/*" class="file-input-hidden">
+                            </label>
+                        </div>
+                        <!-- Slot 5 -->
+                        <div class="slot-card">
+                            <span class="slot-title">Photo 5 (Bottom Mid)</span>
+                            <img src="gallery_5.png" id="thumbSlot5" class="slot-thumb" alt="Slot 5">
+                            <label class="slot-upload-label" for="inputSlot5">
+                                <span>Upload</span>
+                                <input type="file" id="inputSlot5" accept="image/*" class="file-input-hidden">
+                            </label>
+                        </div>
+                        <!-- Slot 6 -->
+                        <div class="slot-card">
+                            <span class="slot-title">Photo 6 (Bottom Right)</span>
+                            <img src="gallery_6.png" id="thumbSlot6" class="slot-thumb" alt="Slot 6">
+                            <label class="slot-upload-label" for="inputSlot6">
+                                <span>Upload</span>
+                                <input type="file" id="inputSlot6" accept="image/*" class="file-input-hidden">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Heart Ribbon Panel -->
+                <div class="studio-panel" id="panelHeartRibbon">
+                    <div class="panel-intro">
+                        <p>Upload a custom graphic or transparent PNG to replace the <strong>Top-Center Heart Ribbon</strong>.</p>
+                    </div>
+                    <div class="panel-upload-row">
+                        <div class="upload-preview-card">
+                            <img src="heart_ribbon.png" id="heartRibbonPreview" class="upload-thumb upload-thumb-contain" alt="Heart Ribbon Preview">
+                            <span class="preview-badge">Current Ribbon</span>
+                        </div>
+                        <div class="upload-actions-card">
+                            <label class="studio-upload-btn" for="inputHeartRibbon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="17 8 12 3 7 8"></polyline>
+                                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                                </svg>
+                                <span>Upload Custom Heart Ribbon</span>
+                                <input type="file" id="inputHeartRibbon" accept="image/*" class="file-input-hidden">
+                            </label>
+                            <button class="studio-btn studio-btn-reset-item" id="btnResetHeartRibbon" type="button">Reset to Original</button>
+                            <p class="file-hint">Transparent PNG artwork works best.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Quotes Panel -->
+                <div class="studio-panel" id="panelQuotes">
+                    <div class="panel-intro">
+                        <p>Customize the <strong>Romantic Birthday Promise Quote</strong>. Changes appear live on the frame!</p>
+                    </div>
+                    <div class="quote-form">
+                        <div class="form-row-between">
+                            <label for="quotePresetsSelect">Choose a Preset or Type Custom Lines:</label>
+                            <select id="quotePresetsSelect" class="studio-select studio-select-sm">
+                                <option value="default" selected>Promise Quote (Default)</option>
+                                <option value="soulmate">Soulmate & Eternal Love</option>
+                                <option value="blessing">Birthday Wish & Blessings</option>
+                                <option value="short">Short & Sweet</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="quoteSparklesInput">Sparkles / Emojis Accents:</label>
+                            <input type="text" id="quoteSparklesInput" value="💖 ✨ ✨" class="studio-input">
+                        </div>
+                        <!-- Font Size Adjustment for Quotes -->
+                        <div class="font-size-control-row">
+                            <div class="control-label-group">
+                                <label for="quoteFontSizeSlider">Quote Text Font Size:</label>
+                                <span class="font-size-badge" id="quoteFontSizeVal">19px</span>
+                            </div>
+                            <div class="slider-with-btns">
+                                <button type="button" class="size-step-btn" id="btnQuoteFontDec" title="Decrease font size">−</button>
+                                <input type="range" id="quoteFontSizeSlider" min="11" max="28" value="19" step="1" class="studio-slider">
+                                <button type="button" class="size-step-btn" id="btnQuoteFontInc" title="Increase font size">+</button>
+                                <button type="button" class="size-reset-btn" id="btnQuoteFontReset" title="Reset font size to default (19px)">Reset (19px)</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="quoteTextarea">Quote Lines (one line per row):</label>
+                            <textarea id="quoteTextarea" class="studio-textarea" rows="9">💫 🦋 On your special
+day i promise i will
+always stand 🦋 with
+u even if the ✨ whole
+world is against u. 🦋
+✨ Always there for
+u in your 🦋 bad and
+good 🦋 times. ❤️
+U're my ✨ happiness
+❤️ My 😊 smile. ❤️</textarea>
+                        </div>
+                        <div class="panel-hint">
+                            💡 <em>Tip: You can also click directly on the quote text in the frame to type and edit inline!</em>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Forever Love Panel -->
+                <div class="studio-panel" id="panelForeverLove">
+                    <div class="panel-intro">
+                        <p>Upload a custom graphic or transparent PNG to replace the <strong>Forever Love Infinity Emblem</strong>.</p>
+                    </div>
+                    <div class="panel-upload-row">
+                        <div class="upload-preview-card">
+                            <img src="forever_love.png" id="foreverLovePreview" class="upload-thumb upload-thumb-contain" alt="Forever Love Preview">
+                            <span class="preview-badge">Current Emblem</span>
+                        </div>
+                        <div class="upload-actions-card">
+                            <label class="studio-upload-btn" for="inputForeverLove">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="17 8 12 3 7 8"></polyline>
+                                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                                </svg>
+                                <span>Upload Custom Forever Love Emblem</span>
+                                <input type="file" id="inputForeverLove" accept="image/*" class="file-input-hidden">
+                            </label>
+                            <button class="studio-btn studio-btn-reset-item" id="btnResetForeverLove" type="button">Reset to Original</button>
+                            <p class="file-hint">Transparent PNG artwork works best.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. Greetings Panel -->
+                <div class="studio-panel" id="panelGreetings">
+                    <div class="panel-intro">
+                        <p>Customize the <strong>Footer Calligraphy Greeting</strong> rendered in flowing Great Vibes cursive script, including editable font sizes!</p>
+                    </div>
+                    <div class="greeting-form">
+                        <div class="form-group">
+                            <label for="inputGreetingLine1">Greeting Line 1:</label>
+                            <input type="text" id="inputGreetingLine1" value="Put Your Greetings Here" class="studio-input" placeholder="Put Your Greetings Here">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputGreetingLine2">Recipient Name / Line 2 (Optional):</label>
+                            <input type="text" id="inputGreetingLine2" value="" placeholder="Optional line 2 (e.g. For My Love, Best Friend...)" class="studio-input">
+                        </div>
+
+                        <!-- Font Size Adjustments for Greetings -->
+                        <div class="font-size-control-group">
+                            <div class="font-size-control-row">
+                                <div class="control-label-group">
+                                    <label for="greeting1FontSizeSlider">Line 1 Font Size ("Put Your Greetings..."):</label>
+                                    <span class="font-size-badge" id="greeting1FontSizeVal">44px</span>
+                                </div>
+                                <div class="slider-with-btns">
+                                    <button type="button" class="size-step-btn" id="btnG1FontDec" title="Decrease font size">−</button>
+                                    <input type="range" id="greeting1FontSizeSlider" min="24" max="64" value="44" step="1" class="studio-slider">
+                                    <button type="button" class="size-step-btn" id="btnG1FontInc" title="Increase font size">+</button>
+                                    <button type="button" class="size-reset-btn" id="btnG1FontReset" title="Reset line 1 font size">Reset (44px)</button>
+                                </div>
+                            </div>
+
+                            <div class="font-size-control-row">
+                                <div class="control-label-group">
+                                    <label for="greeting2FontSizeSlider">Line 2 Font Size (Recipient Name):</label>
+                                    <span class="font-size-badge" id="greeting2FontSizeVal">52px</span>
+                                </div>
+                                <div class="slider-with-btns">
+                                    <button type="button" class="size-step-btn" id="btnG2FontDec" title="Decrease font size">−</button>
+                                    <input type="range" id="greeting2FontSizeSlider" min="28" max="76" value="52" step="1" class="studio-slider">
+                                    <button type="button" class="size-step-btn" id="btnG2FontInc" title="Increase font size">+</button>
+                                    <button type="button" class="size-reset-btn" id="btnG2FontReset" title="Reset line 2 font size">Reset (52px)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="greeting-preview-box">
+                            <span class="greeting-preview-title">Live Calligraphy Preview:</span>
+                            <div class="greeting-preview-render">
+                                <div id="previewGreeting1" class="preview-gv">Put Your Greetings Here</div>
+                                <div id="previewGreeting2" class="preview-gv"></div>
+                            </div>
+                        </div>
+                        <div class="panel-hint">
+                            💡 <em>Tip: You can customize Line 1 and optionally add a recipient name in Line 2, or edit directly on the frame!</em>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. Frame Border Selector Panel -->
+                <div class="studio-panel" id="panelFrameBorder">
+                    <div class="panel-intro">
+                        <p>Choose your preferred <strong>Frame Presentation Border</strong>. Select between an authentic hand-carved ornate wooden frame, a sleek modern beveled edge, or a pure borderless poster canvas. Changes apply instantly to both the live preview and your high-resolution export!</p>
+                    </div>
+
+                    <!-- Frame Border Options Grid -->
+                    <div class="frame-border-cards-grid" id="frameBorderGrid">
+                        <!-- Wood Picture Frame Card -->
+                        <div class="border-option-card active" data-style="wood" id="borderCardWood">
+                            <div class="border-card-preview border-preview-wood">
+                                <span class="border-preview-icon">🪵</span>
+                                <span class="border-active-check">✓ Active</span>
+                            </div>
+                            <div class="border-card-content">
+                                <span class="border-card-title">Authentic Wooden Frame</span>
+                                <span class="border-card-tag">Classic Masterpiece</span>
+                                <p class="border-card-desc">Authentic hand-carved dark wood frame with ornate golden filigree details. Perfect for living room, gallery, and anniversary gifts.</p>
+                            </div>
+                        </div>
+
+                        <!-- Sleek Modern Bevel Card -->
+                        <div class="border-option-card" data-style="sleek" id="borderCardSleek">
+                            <div class="border-card-preview border-preview-sleek">
+                                <span class="border-preview-icon">✨</span>
+                                <span class="border-active-check">✓ Active</span>
+                            </div>
+                            <div class="border-card-content">
+                                <span class="border-card-title">Modern Sleek Bevel</span>
+                                <span class="border-card-tag">Luxury Minimalist</span>
+                                <p class="border-card-desc">Contemporary dark studio edge with a refined 2px inner metallic gold border trim and soft recessed shadows.</p>
+                            </div>
+                        </div>
+
+                        <!-- Borderless / Frameless Canvas Card -->
+                        <div class="border-option-card" data-style="none" id="borderCardNone">
+                            <div class="border-card-preview border-preview-none">
+                                <span class="border-preview-icon">🖼️</span>
+                                <span class="border-active-check">✓ Active</span>
+                            </div>
+                            <div class="border-card-content">
+                                <span class="border-card-title">Borderless Canvas Only</span>
+                                <span class="border-card-tag">Full-Bleed Art Print</span>
+                                <p class="border-card-desc">Pure edge-to-edge frameless art canvas. Ideal for borderless digital wallpaper, social media posts, and custom acrylic mounting.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Active Frame Border Status Info Bar -->
+                    <div class="frame-active-specs-card" id="borderActiveStatusCard">
+                        <div class="specs-icon">🪵</div>
+                        <div class="specs-info">
+                            <span class="specs-title" id="borderStatusTitle">Active Frame Style: Authentic Wooden Picture Frame</span>
+                            <span class="specs-desc" id="borderStatusDesc">Full authentic carved wooden border overlay with realistic depth, warm lighting and golden highlights.</span>
+                        </div>
+                    </div>
+
+                    <div class="panel-hint">
+                        💡 <em>Tip: Your selected frame border is automatically preserved when downloading in Full HD or 4K Ultra HD!</em>
+                    </div>
+                </div>
+
+                <!-- 9. Frame Size & Aspect Ratio Panel -->
+                <div class="studio-panel" id="panelFrameSize">
+                    <div class="panel-intro">
+                        <p>Select your desired <strong>Frame Size & Aspect Ratio</strong>. Choose from standard print paper sizes (A4, A3, A5) or popular photo ratios (3:4, 3:5, 5:7, 4:5, 2:3, 1:1). The live preview and high-resolution export automatically conform to your selection!</p>
+                    </div>
+
+                    <!-- Preset Cards Grid -->
+                    <div class="frame-ratio-grid" id="frameRatioGrid">
+                        <!-- Populated by script.js -->
+                    </div>
+
+                    <!-- Active Format Specifications -->
+                    <div class="frame-active-specs-card" id="frameActiveSpecsCard">
+                        <div class="specs-icon">📐</div>
+                        <div class="specs-info">
+                            <span class="specs-title" id="specsTitle">Active Format: Original Master Template (1092 × 1440)</span>
+                            <span class="specs-desc" id="specsDesc">Native balanced master template ratio (~0.758). Perfect for custom frames, digital displays, and high-fidelity wall art.</span>
+                        </div>
+                    </div>
+
+                    <div class="panel-hint">
+                        💡 <em>Tip: You can also change the frame ratio anytime using the quick selector in the top toolbar!</em>
+                    </div>
+                </div>
+
+            </div> <!-- /.studio-body -->
+        </section> <!-- /.customizer-studio -->
+
+        <!-- Photo Frame Workspace: Contains Frame & Below-Frame Controls -->
+        <div class="frame-workspace" id="frameWorkspace">
+            <!-- The Photo Frame Container (Ratio 1092 x 1440) -->
+            <div class="frame-container frame-style-wood" id="frameContainer" data-ratio="original">
+
+                <!-- Authentic Wood Picture Frame Overlay -->
+                <img src="frame.png" class="frame-wood-overlay" id="frameWoodOverlay" alt="Carved Wooden Picture Frame">
+
+                <!-- Sleek Minimalist Border (Active when frame toggled) -->
+                <div class="frame-sleek-border" id="frameSleekBorder"></div>
+
+                <!-- Inner Canvas Content (936 x 1279 aspect) -->
+                <div class="canvas-inner" id="canvasInner">
+
+                <!-- 1. Top-Left: Calendar Dove Artwork (Selectable Separately) -->
+                <div class="item item-cal-dove" id="calDoveItem" title="Double-tap or double-click to move/scale Calendar Dove Artwork">
+                    <img src="Calender_dove.png" class="cal-banner-img" id="imgCalDove" alt="Calendar dove and golden bar">
+                </div>
+
+                <!-- 2. Top-Left: Calendar Month Name (Selectable Separately) -->
+                <div class="item item-cal-month" id="calMonthItem" title="Double-tap or double-click to move/scale Month Name">
+                    <span class="cal-month-title" id="calMonthTitle">July</span>
+                </div>
+
+                <!-- 3. Top-Left: Calendar Dates Grid (Selectable Separately) -->
+                <section class="item item-cal-grid" id="calendarSection" aria-label="Birthday Calendar Dates" title="Double-tap or double-click to move/scale Calendar Grid">
+                    <div class="cal-weekdays-row" id="calWeekdaysRow">
                         <span class="cal-col-sun">S</span>
                         <span>M</span>
                         <span>T</span>
@@ -108,142 +614,254 @@
                         <span>S</span>
                     </div>
 
-                    <div class="cal-grid">
-                        <!-- Row 1: Mon-Sat (1 to 6) -->
-                        <span class="cal-cell cal-cell-empty"></span>
-                        <span class="cal-cell">1</span>
-                        <span class="cal-cell">2</span>
-                        <span class="cal-cell">3</span>
-                        <span class="cal-cell">4</span>
-                        <span class="cal-cell">5</span>
-                        <span class="cal-cell">6</span>
-
-                        <!-- Row 2: 7 to 13 (July 11 Birthday with red heart) -->
-                        <span class="cal-cell cal-col-sun">7</span>
-                        <span class="cal-cell">8</span>
-                        <span class="cal-cell">9</span>
-                        <span class="cal-cell">10</span>
-                        <span class="cal-cell cal-birthday-cell" title="Birthday: July 11">
-                            <span class="cal-day-num">11</span>
-                            <img src="calendar_heart.png" class="cal-heart-badge" alt="Heart marker">
-                        </span>
-                        <span class="cal-cell">12</span>
-                        <span class="cal-cell">13</span>
-
-                        <!-- Row 3: 14 to 20 -->
-                        <span class="cal-cell cal-col-sun">14</span>
-                        <span class="cal-cell">15</span>
-                        <span class="cal-cell">16</span>
-                        <span class="cal-cell">17</span>
-                        <span class="cal-cell">18</span>
-                        <span class="cal-cell">19</span>
-                        <span class="cal-cell">20</span>
-
-                        <!-- Row 4: 21 to 27 -->
-                        <span class="cal-cell cal-col-sun">21</span>
-                        <span class="cal-cell">22</span>
-                        <span class="cal-cell">23</span>
-                        <span class="cal-cell">24</span>
-                        <span class="cal-cell">25</span>
-                        <span class="cal-cell">26</span>
-                        <span class="cal-cell">27</span>
-
-                        <!-- Row 5: 28 to 31 -->
-                        <span class="cal-cell cal-col-sun">28</span>
-                        <span class="cal-cell">29</span>
-                        <span class="cal-cell">30</span>
-                        <span class="cal-cell">31</span>
-                        <span class="cal-cell cal-cell-empty"></span>
-                        <span class="cal-cell cal-cell-empty"></span>
-                        <span class="cal-cell cal-cell-empty"></span>
+                    <div class="cal-grid" id="calGrid">
+                        <!-- Populated and dynamically managed by script.js -->
                     </div>
                 </section>
 
-                <!-- 2. Top-Center: Hearts with Golden Ribbon -->
-                <div class="item item-hearts" id="heartsDeco">
-                    <img src="heart_ribbon.png" alt="Two red hearts with gold ribbon">
+                <!-- 4. Top-Center: Hearts with Golden Ribbon -->
+                <div class="item item-hearts" id="heartsDeco" title="Double-tap or double-click to move/scale Heart Ribbon">
+                    <img src="heart_ribbon.png" id="imgHeartRibbon" alt="Two red hearts with gold ribbon">
                 </div>
 
-                <!-- 3. Top-Center: Main Couple Portrait Photo -->
-                <div class="item item-couple" id="couplePortrait" title="Click to view photo">
-                    <img src="main_couple.png" alt="Couple portrait in romantic lighting">
+                <!-- 5. Top-Center: Main Couple Portrait Photo -->
+                <div class="item item-couple" id="couplePortrait" title="Double-tap or double-click to move/scale Main Photo">
+                    <img src="main_couple.png" id="imgMainCouple" alt="Couple portrait in romantic lighting">
                 </div>
 
-                <!-- 4. Top-Right: Golden Dreamcatcher -->
-                <div class="item item-dreamcatcher" id="dreamcatcherDeco">
+                <!-- 6. Top-Right: Golden Dreamcatcher -->
+                <div class="item item-dreamcatcher" id="dreamcatcherDeco" title="Double-tap or double-click to move/scale Dreamcatcher">
                     <img src="dreamcatcher.png" alt="Intricate golden dreamcatcher with feathers">
                 </div>
 
-                <!-- 5. Left-Middle: Doves with Golden Heart -->
-                <div class="item item-doves" id="dovesDeco">
+                <!-- 7. Left-Middle: Doves with Golden Heart -->
+                <div class="item item-doves" id="dovesDeco" title="Double-tap or double-click to move/scale Two Doves">
                     <img src="dove_hearts.png" alt="Two doves with shining golden heart">
                 </div>
 
-                <!-- 6. Left-Middle: Birthday Promise Quote in Text Form (Left-Center to 6 images) -->
-                <div class="item item-quote-text" id="birthdayQuote">
-                    <div class="quote-sparkles">💖 ✨ ✨</div>
-                    <p class="quote-line">💫 🦋 On your special</p>
-                    <p class="quote-line">day i promise i will</p>
-                    <p class="quote-line">always stand 🦋 with</p>
-                    <p class="quote-line">u even if the ✨ whole</p>
-                    <p class="quote-line">world is against u. 🦋</p>
-                    <p class="quote-line">✨ Always there for</p>
-                    <p class="quote-line">u in your 🦋 bad and</p>
-                    <p class="quote-line">good 🦋 times. ❤️</p>
-                    <p class="quote-line">U're my ✨ happiness</p>
-                    <p class="quote-line quote-last-line">❤️ My 😊 smile. ❤️</p>
+                <!-- 8. Left-Middle: Birthday Promise Quote in Text Form (Left-Center to 6 images) -->
+                <div class="item item-quote-text" id="birthdayQuote" title="Double-tap or double-click to move/scale Quote">
+                    <div class="quote-sparkles" id="renderedSparkles">💖 ✨ ✨</div>
+                    <div id="renderedQuoteLines">
+                        <p class="quote-line">💫 🦋 On your special</p>
+                        <p class="quote-line">day i promise i will</p>
+                        <p class="quote-line">always stand 🦋 with</p>
+                        <p class="quote-line">u even if the ✨ whole</p>
+                        <p class="quote-line">world is against u. 🦋</p>
+                        <p class="quote-line">✨ Always there for</p>
+                        <p class="quote-line">u in your 🦋 bad and</p>
+                        <p class="quote-line">good 🦋 times. ❤️</p>
+                        <p class="quote-line">U're my ✨ happiness</p>
+                        <p class="quote-line quote-last-line">❤️ My 😊 smile. ❤️</p>
+                    </div>
                 </div>
 
-                <!-- 7. Center-Right: 6-Photo Collage Gallery Grid -->
-                <section class="item item-gallery" id="photoGallery" aria-label="Photo Gallery">
+                <!-- 9. Center-Right: 6-Photo Collage Gallery Grid (All 6 images separately selectable) -->
+                <section class="gallery-grid-wrapper" id="photoGalleryWrapper" aria-label="Photo Gallery">
                     <!-- Top Row -->
-                    <div class="gallery-cell cell-1" data-src="gallery_1.png" title="Click to enlarge">
-                        <img src="gallery_1.png" alt="Nandini in teal dress in nature">
+                    <div class="item gallery-cell cell-1" id="gallerySlot1" data-slot="1" data-src="gallery_1.png" title="Double-tap or double-click to move/scale Photo 1">
+                        <img src="gallery_1.png" id="imgSlot1" alt="Beautiful portrait in nature">
                     </div>
-                    <div class="gallery-cell cell-2" data-src="gallery_2.png" title="Click to enlarge">
-                        <img src="gallery_2.png" alt="Couple embracing softly under tree">
+                    <div class="item gallery-cell cell-2" id="gallerySlot2" data-slot="2" data-src="gallery_2.png" title="Double-tap or double-click to move/scale Photo 2">
+                        <img src="gallery_2.png" id="imgSlot2" alt="Couple embracing softly under tree">
                     </div>
-                    <div class="gallery-cell cell-3" data-src="gallery_3.png" title="Click to enlarge">
-                        <img src="gallery_3.png" alt="Loving couple holding each other outdoors">
+                    <div class="item gallery-cell cell-3" id="gallerySlot3" data-slot="3" data-src="gallery_3.png" title="Double-tap or double-click to move/scale Photo 3">
+                        <img src="gallery_3.png" id="imgSlot3" alt="Loving couple holding each other outdoors">
                     </div>
 
                     <!-- Bottom Row -->
-                    <div class="gallery-cell cell-4" data-src="gallery_4.png" title="Click to enlarge">
-                        <img src="gallery_4.png" alt="Romantic sunset silhouette embrace">
+                    <div class="item gallery-cell cell-4" id="gallerySlot4" data-slot="4" data-src="gallery_4.png" title="Double-tap or double-click to move/scale Photo 4">
+                        <img src="gallery_4.png" id="imgSlot4" alt="Romantic sunset silhouette embrace">
                     </div>
-                    <div class="gallery-cell cell-5" data-src="gallery_5.png" title="Click to enlarge">
-                        <img src="gallery_5.png" alt="Couple in blue in serene grassy field">
+                    <div class="item gallery-cell cell-5" id="gallerySlot5" data-slot="5" data-src="gallery_5.png" title="Double-tap or double-click to move/scale Photo 5">
+                        <img src="gallery_5.png" id="imgSlot5" alt="Couple in blue in serene grassy field">
                     </div>
-                    <div class="gallery-cell cell-6" data-src="gallery_6.png" title="Click to enlarge">
-                        <img src="gallery_6.png" alt="Romantic portrait with saree and kurta">
+                    <div class="item gallery-cell cell-6" id="gallerySlot6" data-slot="6" data-src="gallery_6.png" title="Double-tap or double-click to move/scale Photo 6">
+                        <img src="gallery_6.png" id="imgSlot6" alt="Romantic portrait with saree and kurta">
                     </div>
                 </section>
 
-                <!-- 8. Bottom-Center: Forever Love Infinity Emblem -->
-                <div class="item item-forever" id="foreverLove">
-                    <img src="forever_love.png" alt="Forever Love infinity loop with dove">
+                <!-- 10. Bottom-Center: Forever Love Infinity Emblem -->
+                <div class="item item-forever" id="foreverLove" title="Double-tap or double-click to move/scale Forever Love emblem">
+                    <img src="forever_love.png" id="imgForeverLove" alt="Forever Love infinity loop with dove">
                 </div>
 
-                <!-- 9. Bottom-Center: Birthday Greeting in Text Form (Between Butterflies) -->
-                <div class="item item-greeting-text" id="birthdayGreeting">
-                    <h2 class="greeting-line-1">Happy birthday my dear</h2>
-                    <h2 class="greeting-line-2">wife Nandini</h2>
+                <!-- 11. Bottom-Center: Calligraphy Greeting in Text Form (Between Butterflies) -->
+                <div class="item item-greeting-text" id="birthdayGreeting" title="Double-tap or double-click to move/scale Greeting">
+                    <h2 class="greeting-line-1" id="greetingLine1">Put Your Greetings Here</h2>
+                    <h2 class="greeting-line-2" id="greetingLine2"></h2>
                 </div>
 
-                <!-- 10. Bottom-Left: Glass Crystal Butterfly -->
-                <div class="item item-butterfly-left" id="butterflyLeft">
+                <!-- 12. Bottom-Left: Glass Crystal Butterfly -->
+                <div class="item item-butterfly-left" id="butterflyLeft" title="Double-tap or double-click to move/scale Left Butterfly">
                     <img src="butterfly_left.png" alt="Crystal jeweled butterfly left">
                 </div>
 
-                <!-- 11. Bottom-Right: Glass Crystal Butterfly -->
-                <div class="item item-butterfly-right" id="butterflyRight">
+                <!-- 13. Bottom-Right: Glass Crystal Butterfly -->
+                <div class="item item-butterfly-right" id="butterflyRight" title="Double-tap or double-click to move/scale Right Butterfly">
                     <img src="butterfly_right.png" alt="Crystal jeweled butterfly right">
                 </div>
 
             </div> <!-- /.canvas-inner -->
 
         </div> <!-- /.frame-container -->
+
+        <!-- Floating Transform & Drag Controls HUD (Positioned Just Below The Frame with Gap) -->
+        <div class="transform-hud" id="transformHud" style="display: none;" role="toolbar" aria-label="Element Transform Controls">
+            <div class="hud-main-bar">
+                <div class="hud-badge-element" id="hudItemName">
+                    <span class="hud-drag-icon">✥</span>
+                    <span class="hud-name-text" id="hudElementTitle">Element</span>
+                </div>
+                <div class="hud-scale-display" title="Element Zoom Level">
+                    <span class="hud-scale-label">Zoom:</span>
+                    <span class="hud-scale-val" id="hudScaleVal">100%</span>
+                </div>
+                <div class="hud-btn-actions">
+                    <button type="button" class="hud-btn" id="hudBtnZoomOut" title="Zoom Out (Scroll Down / Minus '-')">−</button>
+                    <button type="button" class="hud-btn" id="hudBtnZoomIn" title="Zoom In (Scroll Up / Plus '+')">+</button>
+                    <button type="button" class="hud-btn hud-btn-reset" id="hudBtnReset" title="Reset Position & Zoom (or 'R')">↺ Reset</button>
+                    <button type="button" class="hud-btn hud-btn-done" id="hudBtnDone" title="Finish Dragging (or Esc / Enter)">✓ Done</button>
+                </div>
+            </div>
+            <div class="hud-instructions">
+                <span>🖱️ Click & Drag to move</span> • 
+                <span>⌨️ Arrow keys nudge</span> • 
+                <span>🔍 Wheel or +/− to zoom</span> • 
+                <span>✌️ 2-finger pinch</span>
+            </div>
+        </div> <!-- /.transform-hud -->
+
+    </div> <!-- /.frame-workspace -->
     </main>
+
+    <!-- Download Photo Frame Modal Dialog -->
+    <dialog class="download-modal" id="downloadModal" aria-labelledby="downloadModalTitle">
+        <div class="download-dialog-content">
+            <header class="download-modal-header">
+                <div class="download-icon-circle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                </div>
+                <div class="download-modal-titles">
+                    <h3 id="downloadModalTitle">Download Photo Frame</h3>
+                    <p>Export your customized photo frame in Full HD quality</p>
+                </div>
+                <button class="download-modal-close" id="btnDownloadModalClose" aria-label="Close download modal">✕</button>
+            </header>
+
+            <div class="download-modal-body">
+                <!-- Option 1: File Format Selection (PNG vs JPEG) -->
+                <section class="download-option-group">
+                    <span class="option-group-title">1. Choose File Format:</span>
+                    <div class="format-choice-cards">
+                        <!-- PNG Card -->
+                        <label class="choice-card active" id="labelFormatPng">
+                            <input type="radio" name="downloadFormat" value="png" checked class="choice-radio">
+                            <div class="choice-icon-wrap png-icon">
+                                <span>PNG</span>
+                            </div>
+                            <div class="choice-details">
+                                <span class="choice-name">PNG (Lossless Full HD)</span>
+                                <span class="choice-desc">Crisp calligraphy, sharp text, and lossless graphic overlays</span>
+                            </div>
+                            <span class="choice-tag">Recommended</span>
+                        </label>
+
+                        <!-- JPEG Card -->
+                        <label class="choice-card" id="labelFormatJpeg">
+                            <input type="radio" name="downloadFormat" value="jpeg" class="choice-radio">
+                            <div class="choice-icon-wrap jpeg-icon">
+                                <span>JPG</span>
+                            </div>
+                            <div class="choice-details">
+                                <span class="choice-name">JPEG (Ultra HD 1080p — 95% Quality)</span>
+                                <span class="choice-desc">Vibrant photo colors, smooth shadows, and optimal file size</span>
+                            </div>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Option 2: Frame Size & Aspect Ratio Selection -->
+                <section class="download-option-group">
+                    <div class="group-title-with-badge">
+                        <span class="option-group-title">2. Choose Frame Size & Aspect Ratio:</span>
+                        <span class="group-active-badge" id="downloadActiveRatioBadge">Original (1092 × 1440)</span>
+                    </div>
+                    <div class="download-ratio-grid" id="downloadRatioGrid">
+                        <!-- Populated and synchronized by script.js -->
+                    </div>
+                </section>
+
+                <!-- Option 3: Frame Border Style Selection -->
+                <section class="download-option-group">
+                    <span class="option-group-title">3. Choose Presentation Style:</span>
+                    <div class="format-choice-cards grid-2">
+                        <!-- Wood Frame Card -->
+                        <label class="choice-card active" id="labelFrameWood">
+                            <input type="radio" name="downloadFrameStyle" value="wood" checked class="choice-radio">
+                            <div class="choice-icon-wrap frame-icon">🪵</div>
+                            <div class="choice-details">
+                                <span class="choice-name">Complete Wooden Picture Frame</span>
+                                <span class="choice-desc" id="woodFrameDesc">With authentic carved wooden border (Full HD quality)</span>
+                            </div>
+                        </label>
+
+                        <!-- Frameless Canvas Card -->
+                        <label class="choice-card" id="labelFrameNone">
+                            <input type="radio" name="downloadFrameStyle" value="none" class="choice-radio">
+                            <div class="choice-icon-wrap frame-icon">🖼️</div>
+                            <div class="choice-details">
+                                <span class="choice-name">Frameless Inner Canvas Only</span>
+                                <span class="choice-desc" id="framelessDesc">Clean borderless poster art</span>
+                            </div>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Option 4: Resolution / Quality -->
+                <section class="download-option-group">
+                    <span class="option-group-title">4. Select Quality Level:</span>
+                    <div class="resolution-pills">
+                        <label class="res-pill active" id="labelRes1x">
+                            <input type="radio" name="downloadResolution" value="1" checked class="choice-radio">
+                            <span class="res-name">Full HD (Standard)</span>
+                            <span class="res-dim" id="dim1x">1092 × 1440 px</span>
+                        </label>
+                        <label class="res-pill" id="labelRes2x">
+                            <input type="radio" name="downloadResolution" value="2" class="choice-radio">
+                            <span class="res-name">💎 Ultra HD / 300 DPI Print</span>
+                            <span class="res-dim" id="dim2x">2184 × 2880 px</span>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Rendering Status & Spinner -->
+                <div class="download-status" id="downloadStatus" style="display: none;">
+                    <div class="status-spinner"></div>
+                    <div class="status-text-group">
+                        <span class="status-title" id="statusTitle">Rendering Full HD canvas...</span>
+                        <span class="status-subtitle" id="statusSubtitle">Compositing your photos, fonts and decorations</span>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="download-modal-footer">
+                <button type="button" class="studio-btn studio-btn-secondary" id="btnCancelDownload">Cancel</button>
+                <button type="button" class="studio-btn studio-btn-primary studio-btn-lg" id="btnConfirmDownload">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    <span id="confirmDownloadText">Download Image</span>
+                </button>
+            </footer>
+        </div>
+    </dialog>
 
     <!-- Lightbox Modal for Photo Zooming -->
     <dialog class="lightbox-modal" id="lightboxModal">
@@ -253,6 +871,10 @@
         </div>
     </dialog>
 
+    <!-- Toast Notification for Actions -->
+    <div class="action-toast" id="actionToast">Action completed!</div>
+
+    <script src="assets-base64.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
